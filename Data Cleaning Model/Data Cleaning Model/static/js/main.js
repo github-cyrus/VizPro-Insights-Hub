@@ -278,8 +278,11 @@ async function applyMissingDataOperation() {
     }
 
     try {
+        // Use the full dataset if available, otherwise use preview
+        const dataToClean = currentData.full_data || currentData.preview;
+        
         // Sanitize data before sending
-        const cleanData = currentData.preview.map(row => {
+        const cleanData = dataToClean.map(row => {
             const cleanRow = {};
             for (const [key, value] of Object.entries(row)) {
                 cleanRow[key] = value === "NaN" || value === null ? null : value;
@@ -309,6 +312,7 @@ async function applyMissingDataOperation() {
         currentData = {
             ...currentData,
             preview: sanitizeResponseData(data.preview),
+            full_data: data.full_data ? sanitizeResponseData(data.full_data) : null,
             analysis: data.analysis
         };
         
@@ -353,20 +357,28 @@ async function removeDuplicates() {
     }];
 
     try {
+        // Use the full dataset if available, otherwise use preview
+        const dataToClean = currentData.full_data || currentData.preview;
+
         const response = await fetch('/clean', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                data: currentData.preview,
+                data: dataToClean,
                 operations: operations
             })
         });
 
         const data = await response.json();
         if (response.ok) {
-            currentData = {...currentData, ...data};
+            currentData = {
+                ...currentData,
+                preview: sanitizeResponseData(data.preview),
+                full_data: data.full_data ? sanitizeResponseData(data.full_data) : null,
+                analysis: data.analysis
+            };
             updateUI(currentData);
             Swal.fire({
                 title: 'Success!',
@@ -412,20 +424,28 @@ async function changeDataType() {
     }];
 
     try {
+        // Use the full dataset if available, otherwise use preview
+        const dataToClean = currentData.full_data || currentData.preview;
+
         const response = await fetch('/clean', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                data: currentData.preview,
+                data: dataToClean,
                 operations: operations
             })
         });
 
         const data = await response.json();
         if (response.ok) {
-            currentData = {...currentData, ...data};
+            currentData = {
+                ...currentData,
+                preview: sanitizeResponseData(data.preview),
+                full_data: data.full_data ? sanitizeResponseData(data.full_data) : null,
+                analysis: data.analysis
+            };
             updateUI(currentData);
             Swal.fire({
                 title: 'Success!',
@@ -468,7 +488,7 @@ async function downloadData() {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                data: currentData.preview
+                data: currentData.full_data || currentData.preview  // Use full_data if available, fallback to preview
             })
         });
 

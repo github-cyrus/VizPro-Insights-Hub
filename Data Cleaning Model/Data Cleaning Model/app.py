@@ -29,6 +29,7 @@ def upload_file():
 
         # Clean and prepare data
         preview_data = clean_data_for_json(df.head())
+        full_data = clean_data_for_json(df)
         
         # Ensure analysis is not None
         analysis = analyze_columns(df) or {
@@ -46,6 +47,7 @@ def upload_file():
         return jsonify({
             'success': True,
             'preview': preview_data,
+            'full_data': full_data,
             'columns': df.columns.tolist(),
             'analysis': analysis,
             'total_rows': len(df),
@@ -162,9 +164,13 @@ def clean_data():
         cleaned_preview = clean_data_for_json(df.head())
         analysis = analyze_columns(df)
 
+        # Convert full dataset to JSON-serializable format
+        full_data = clean_data_for_json(df)
+
         return jsonify({
             'success': True,
             'preview': cleaned_preview,
+            'full_data': full_data,
             'analysis': analysis,
             'missing_data': df.isnull().sum().to_dict(),
             'duplicates': int(df.duplicated().sum()),
