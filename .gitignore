@@ -1,0 +1,17 @@
+# Firebase config
+firebaseConfig.js
+
+# Python
+__pycache__/
+*.pyc
+
+# Environment
+venv/
+.env
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log

@@ -1,0 +1,6 @@
+Age,Department,ID,Name,Salary
+25.0,HR,1,Alice,50000
+30.0,IT,2,Bob,60000
+,Finance,3,Charlie,70000
+40.0,Marketing,4,David,80000
+22.0,HR,5,Eve,90000

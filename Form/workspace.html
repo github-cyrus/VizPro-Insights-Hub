@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>VizPro - Dashboard Workspace</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <!-- Custom styles -->
+    <style>
+        :root {
+            --primary-color: #4facfe;
+            --secondary-color: #00f2fe;
+            --dark-bg: #1a1a1a;
+            --darker-bg: #141414;
+            --light-text: #ffffff;
+            --gray-text: #888888;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+            color: var(--light-text);
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Add animated background pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 25% 25%, rgba(79, 172, 254, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(0, 242, 254, 0.05) 0%, transparent 50%),
+                linear-gradient(45deg, rgba(26, 26, 26, 0.7) 0%, rgba(10, 10, 10, 0.7) 100%);
+            z-index: -1;
+            animation: bgAnimation 15s ease infinite alternate;
+        }
+
+        @keyframes bgAnimation {
+            0% {
+                background-position: 0% 0%;
+            }
+            100% {
+                background-position: 100% 100%;
+            }
+        }
+
+        .navbar {
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .workspace-container {
+            padding: 3rem 0;
+            position: relative;
+        }
+
+        .workspace-form {
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            max-width: 1000px;
+            margin: 0 auto;
+            border: 1px solid rgba(79, 172, 254, 0.1);
+        }
+
+        /* Add subtle glow effect to form elements on hover */
+        .form-select:hover, .form-control:hover, .upload-area:hover {
+            box-shadow: 0 0 15px rgba(79, 172, 254, 0.1);
+        }
+
+        /* Enhanced upload area design */
+        .upload-area {
+            border: 2px dashed var(--primary-color);
+            border-radius: 10px;
+            padding: 2.5rem;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+            background: rgba(26, 26, 26, 0.5);
+            backdrop-filter: blur(5px);
+            cursor: pointer;
+            margin-bottom: 2rem;
+        }
+
+        .upload-area:hover {
+            border-color: var(--secondary-color);
+            background: rgba(79, 172, 254, 0.05);
+            transform: translateY(-2px);
+        }
+
+        /* Enhanced button design */
+        .btn-custom {
+            background: linear-gradient(90deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-custom::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .btn-custom:hover::before {
+            left: 100%;
+        }
+
+        .btn-custom:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(79, 172, 254, 0.3);
+        }
+
+        /* Add subtle animation to icons */
+        .form-label i {
+            transition: transform 0.3s ease;
+        }
+
+        .form-label:hover i {
+            transform: scale(1.1);
+        }
+
+        /* Enhanced theme options */
+        .theme-option label {
+            background: rgba(26, 26, 26, 0.5);
+            backdrop-filter: blur(5px);
+            border: 2px solid rgba(79, 172, 254, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .theme-option input[type="radio"]:checked + label {
+            border-color: var(--primary-color);
+            background: rgba(79, 172, 254, 0.1);
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        /* Page title enhancement */
+        .page-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .page-title h1 {
+            color: var(--light-text);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .page-title h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+            border-radius: 3px;
+        }
+
+        .page-title p {
+            color: var(--gray-text);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .navbar-brand {
+            color: var(--primary-color) !important;
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .form-label {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: block;
+            color: var(--primary-color);
+        }
+
+        .form-label i {
+            margin-right: 0.5rem;
+        }
+
+        .file-input {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .upload-text i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .upload-text p {
+            margin-bottom: 0.5rem;
+            color: var(--light-text);
+            font-size: 1.1rem;
+        }
+
+        .file-types {
+            color: var(--gray-text);
+            font-size: 0.9rem;
+        }
+
+        .form-select, .form-control {
+            background: var(--darker-bg);
+            border: 1px solid #333;
+            color: var(--light-text);
+            padding: 0.8rem;
+            border-radius: 8px;
+            width: 100%;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-select:focus, .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(79, 172, 254, 0.2);
+            background: var(--darker-bg);
+        }
+
+        .theme-options {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .theme-option input[type="radio"] {
+            display: none;
+        }
+
+        .theme-option label {
+            display: block;
+            padding: 1rem;
+            background: var(--darker-bg);
+            border: 2px solid #333;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .theme-option input[type="radio"]:checked + label {
+            border-color: var(--primary-color);
+            background: rgba(79, 172, 254, 0.1);
+            color: var(--primary-color);
+        }
+
+        .enhancement-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-check {
+            background: var(--darker-bg);
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid #333;
+        }
+
+        .form-check-input {
+            margin-right: 0.5rem;
+        }
+
+        .form-check-label {
+            color: var(--light-text);
+        }
+
+        /* Progress Steps */
+        .form-progress {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .form-progress::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: rgba(79, 172, 254, 0.1);
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+
+        .progress-step {
+            position: relative;
+            z-index: 2;
+            background: var(--dark-bg);
+            padding: 1rem;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .progress-step i {
+            font-size: 1.5rem;
+            color: var(--gray-text);
+            margin-bottom: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .progress-step span {
+            font-size: 0.8rem;
+            color: var(--gray-text);
+            position: absolute;
+            bottom: -25px;
+            white-space: nowrap;
+        }
+
+        .progress-step.active {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            transform: scale(1.1);
+        }
+
+        .progress-step.active i,
+        .progress-step.active span {
+            color: white;
+        }
+
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .section-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1rem;
+            background: linear-gradient(135deg, rgba(79, 172, 254, 0.1), rgba(0, 242, 254, 0.1));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .section-icon i {
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+
+        /* Enhanced Cards */
+        .enhancement-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .enhancement-card {
+            background: rgba(26, 26, 26, 0.5);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            border: 1px solid rgba(79, 172, 254, 0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .enhancement-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            border-color: var(--primary-color);
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, rgba(79, 172, 254, 0.1), rgba(0, 242, 254, 0.1));
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .card-header i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .card-header h4 {
+            color: var(--light-text);
+            margin: 0;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        /* Dashboard Types */
+        .dashboard-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .type-option input[type="radio"] {
+            display: none;
+        }
+
+        .type-option label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1.5rem;
+            background: rgba(26, 26, 26, 0.5);
+            border: 1px solid rgba(79, 172, 254, 0.1);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .type-option label i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .type-option input[type="radio"]:checked + label {
+            background: linear-gradient(135deg, rgba(79, 172, 254, 0.1), rgba(0, 242, 254, 0.1));
+            border-color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+
+        /* Color Schemes */
+        .color-schemes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .color-option input[type="radio"] {
+            display: none;
+        }
+
+        .color-option label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem;
+            background: rgba(26, 26, 26, 0.5);
+            border: 1px solid rgba(79, 172, 254, 0.1);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .color-preview {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-bottom: 0.5rem;
+        }
+
+        .modern-dark {
+            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+        }
+
+        .light-minimal {
+            background: linear-gradient(135deg, #ffffff, #f0f0f0);
+        }
+
+        .gradient-blue {
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+        }
+
+        .custom-colors {
+            background: linear-gradient(135deg, #ff6b6b, #feca57, #48dbfb);
+        }
+
+        /* Settings Grid */
+        .settings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .setting-option {
+            background: rgba(26, 26, 26, 0.5);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid rgba(79, 172, 254, 0.1);
+        }
+
+        /* Chips */
+        .export-formats {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .chip {
+            padding: 0.5rem 1rem;
+            background: rgba(79, 172, 254, 0.1);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .chip:hover {
+            background: rgba(79, 172, 254, 0.2);
+        }
+
+        .chip input[type="checkbox"] {
+            display: none;
+        }
+
+        .chip input[type="checkbox"]:checked + .chip {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Form Navigation */
+        .form-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(79, 172, 254, 0.1);
+        }
+
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn i {
+            margin: 0 0.5rem;
+        }
+
+        .btn-secondary {
+            background: rgba(79, 172, 254, 0.1);
+            color: var(--light-text);
+            border: 1px solid rgba(79, 172, 254, 0.2);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(79, 172, 254, 0.2);
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
+            color: white;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(79, 172, 254, 0.3);
+        }
+
+        /* Form Sections */
+        .form-section {
+            display: none;
+        }
+
+        .form-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .progress-step {
+                width: 50px;
+                height: 50px;
+            }
+
+            .progress-step i {
+                font-size: 1.2rem;
+            }
+
+            .enhancement-grid,
+            .dashboard-types,
+            .color-schemes,
+            .settings-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-navigation {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .workspace-container {
+                padding: 2rem 1rem;
+            }
+            
+            .workspace-form {
+                padding: 1.5rem;
+            }
+            
+            .theme-options {
+                grid-template-columns: 1fr;
+            }
+            
+            .enhancement-options {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .form-control {
+            background: var(--darker-bg);
+            border: 1px solid #333;
+            color: var(--light-text);
+            padding: 0.8rem;
+            border-radius: 8px;
+            width: 100%;
+            margin-top: 0.5rem;
+        }
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(79, 172, 254, 0.25);
+            outline: none;
+        }
+    </style>
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="../assets/favicon_io/site.webmanifest">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-chart-bar"></i> VizPro:Insights Hub 
+            </a>
+        </div>
+    </nav>
+
+    <!-- Workspace Section -->
+    <div class="workspace-container">
+        <div class="container">
+            <!-- Page Title -->
+            <div class="page-title">
+                <h1>Create Your Dashboard</h1>
+                <p>Transform your data into stunning visualizations with our customizable dashboard builder</p>
+            </div>
+
+            <!-- Workspace Form -->
+            <div class="workspace-form">
+                <form id="dashboardForm">
+                    <!-- Personal Information Section -->
+                    <div class="section-header">
+                        <h3>Personal Information</h3>
+                    </div>
+                    
+                    <div class="form-group mb-4">
+                        <label class="form-label" for="userName">
+                            <i class="fas fa-user"></i> Your Name
+                        </label>
+                        <input type="text" id="userName" name="userName" class="form-control" placeholder="Enter your full name" required>
+                    </div>
+
+                    <div class="form-group mb-4">
+                        <label class="form-label" for="userEmail">
+                            <i class="fas fa-envelope"></i> Email Address
+                        </label>
+                        <input type="email" id="userEmail" name="userEmail" class="form-control" placeholder="Enter your email address" required>
+                    </div>
+
+                    <div class="form-group mb-4">
+                        <label class="form-label" for="userPhone">
+                            <i class="fas fa-phone"></i> Phone Number
+                        </label>
+                        <input type="tel" id="userPhone" name="userPhone" class="form-control" placeholder="Enter your phone number" required>
+                    </div>
+
+                    <!-- File Upload Section -->
+                    <div class="form-group">
+                        <label class="form-label">
+                            <i class="fas fa-upload"></i> Upload Your Data File
+                        </label>
+                        <div class="upload-area" id="uploadArea">
+                            <input type="file" id="fileUpload" class="file-input" accept=".csv,.xlsx,.json" max-size="50000000">
+                            <div class="upload-text">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <p>Drag & Drop or Click to Upload</p>
+                                <span class="file-types">Supported formats: CSV, XLSX, JSON (Max 50MB)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dashboard Type Selection -->
+                    <div class="form-group">
+                        <label class="form-label">
+                            <i class="fas fa-chart-bar"></i> Dashboard Type
+                        </label>
+                        <select class="form-select" id="dashboardType">
+                            <option value="">Select Dashboard Type</option>
+                            <option value="analytics">Analytics Dashboard</option>
+                            <option value="business">Business Intelligence</option>
+                            <option value="sales">Sales & Revenue</option>
+                            <option value="performance">Performance Metrics</option>
+                            <option value="custom">Custom Dashboard</option>
+                        </select>
+                    </div>
+
+                    <!-- Theme Selection -->
+                    <div class="form-group">
+                        <label class="form-label">
+                            <i class="fas fa-palette"></i> Dashboard Theme
+                        </label>
+                        <div class="theme-options">
+                            <div class="theme-option">
+                                <input type="radio" name="theme" id="darkTheme" value="dark" checked>
+                                <label for="darkTheme">Dark Theme</label>
+                            </div>
+                            <div class="theme-option">
+                                <input type="radio" name="theme" id="lightTheme" value="light">
+                                <label for="lightTheme">Light Theme</label>
+                            </div>
+                            <div class="theme-option">
+                                <input type="radio" name="theme" id="customTheme" value="custom">
+                                <label for="customTheme">Custom Theme</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Data Enhancement Options -->
+                    <div class="form-group">
+                        <label class="form-label">
+                            <i class="fas fa-magic"></i> Data Enhancements
+                        </label>
+                        <div class="enhancement-options">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="dataCleaning">
+                                <label class="form-check-label" for="dataCleaning">Data Cleaning</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="dataTransformation">
+                                <label class="form-check-label" for="dataTransformation">Data Transformation</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="visualTweaks">
+                                <label class="form-check-label" for="visualTweaks">Visual Enhancements</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Special Request Box -->
+                    <div class="form-group">
+                        <label class="form-label">
+                            <i class="fas fa-star"></i> Special Requests
+                        </label>
+                        <textarea class="form-control" id="specialRequests" rows="3" placeholder="Enter any specific customization needs or requirements..."></textarea>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn btn-custom">
+                        <i class="fas fa-rocket"></i> Generate Dashboard
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Form navigation
+            const sections = document.querySelectorAll('.form-section');
+            const progressSteps = document.querySelectorAll('.progress-step');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const submitBtn = document.getElementById('submitBtn');
+            let currentStep = 0;
+
+            function updateFormNavigation() {
+                sections.forEach((section, index) => {
+                    section.classList.remove('active');
+                    progressSteps[index].classList.remove('active');
+                });
+
+                sections[currentStep].classList.add('active');
+                progressSteps[currentStep].classList.add('active');
+
+                // Update buttons
+                prevBtn.style.display = currentStep === 0 ? 'none' : 'block';
+                nextBtn.style.display = currentStep === sections.length - 1 ? 'none' : 'block';
+                submitBtn.style.display = currentStep === sections.length - 1 ? 'block' : 'none';
+            }
+
+            prevBtn.addEventListener('click', () => {
+                if (currentStep > 0) {
+                    currentStep--;
+                    updateFormNavigation();
+                }
+            });
+
+            nextBtn.addEventListener('click', () => {
+                if (currentStep < sections.length - 1) {
+                    currentStep++;
+                    updateFormNavigation();
+                }
+            });
+
+            // File upload handling
+            const uploadArea = document.getElementById('uploadArea');
+            const fileInput = document.getElementById('fileUpload');
+            const uploadPreview = document.querySelector('.upload-preview');
+            const filename = document.querySelector('.filename');
+            const removeBtn = document.querySelector('.btn-remove');
+
+            uploadArea.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                uploadArea.classList.add('dragover');
+            });
+
+            uploadArea.addEventListener('dragleave', () => {
+                uploadArea.classList.remove('dragover');
+            });
+
+            uploadArea.addEventListener('drop', (e) => {
+                e.preventDefault();
+                uploadArea.classList.remove('dragover');
+                const file = e.dataTransfer.files[0];
+                handleFile(file);
+            });
+
+            uploadArea.addEventListener('click', () => {
+                fileInput.click();
+            });
+
+            fileInput.addEventListener('change', (e) => {
+                const file = e.target.files[0];
+                handleFile(file);
+            });
+
+            function handleFile(file) {
+                if (file) {
+                    if (file.size > 50000000) { // 50MB
+                        alert('File size exceeds 50MB limit');
+                        return;
+                    }
+
+                    const validTypes = ['.csv', '.xlsx', '.json'];
+                    const fileExtension = '.' + file.name.split('.').pop().toLowerCase();
+                    if (!validTypes.includes(fileExtension)) {
+                        alert('Invalid file type. Please upload CSV, XLSX, or JSON files.');
+                        return;
+                    }
+
+                    filename.textContent = file.name;
+                    uploadArea.style.display = 'none';
+                    uploadPreview.style.display = 'block';
+                }
+            }
+
+            removeBtn.addEventListener('click', () => {
+                fileInput.value = '';
+                uploadArea.style.display = 'block';
+                uploadPreview.style.display = 'none';
+            });
+
+            // Form submission
+            document.getElementById('dashboardForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                // Show loading state
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating...';
+
+                // Simulate API call
+                setTimeout(() => {
+                    // Reset form state
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = '<i class="fas fa-rocket"></i> Generate Dashboard';
+                    
+                    // Show success message
+                    alert('Dashboard generated successfully!');
+                }, 2000);
+            });
+
+            // Initialize form navigation
+            updateFormNavigation();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1871 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- Enhanced metadata -->
+    <meta name="description" content="VizPro:Insights - Advanced data visualization and AI-powered analytics dashboard solutions for businesses. Transform your data into actionable insights with our cutting-edge tools.">
+    <meta name="author" content="Cyrus">
+    <meta name="keywords" content="data visualization, business analytics, AI dashboard, machine learning, data insights, business intelligence">
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="VizPro:Insights - Advanced Data Visualization Solutions">
+    <meta property="og:description" content="Transform your data into actionable insights with our AI-powered analytics dashboard solutions.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://your-website-url.com">
+    
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="/assets/favicon_io/site.webmanifest">
+    
+    <title>VizPro:Insights - Advanced Data Visualization Solutions</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/templatemo-edu-meeting.css">
+    <link rel="stylesheet" href="assets/css/owl.css">
+    <link rel="stylesheet" href="assets/css/lightbox.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- AOS Library for animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<!--
+
+TemplateMo 569 Edu Meeting
+
+https://templatemo.com/tm-569-edu-meeting
+
+-->
+<style>
+/* Contact Section Styles */
+.contact-us {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Login Button Styles */
+.right-icons .btn-primary {
+    color: #fff;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    margin-left: 10px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.right-icons .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.right-icons ul li:last-child {
+    margin-left: 15px;
+}
+
+/* Contact Section Styles */
+.contact-us {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-us::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect fill="rgba(255,255,255,0.03)" x="0" y="0" width="100" height="100"/></svg>') repeat;
+    opacity: 0.5;
+    animation: backgroundShift 15s linear infinite;
+}
+
+@keyframes backgroundShift {
+    0% { transform: translateX(0) translateY(0); }
+    50% { transform: translateX(-10px) translateY(-10px); }
+    100% { transform: translateX(0) translateY(0); }
+}
+
+.contact-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.contact-box {
+    background: rgba(25, 25, 25, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+/* Form Side Styles */
+.contact-form-side {
+    flex: 1;
+    padding: 50px;
+    background: rgba(30, 30, 30, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+.form-header {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    color: #ffffff;
+    font-weight: 700;
+    margin-bottom: 15px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.section-divider {
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #00f2fe 0%, #4facfe 100%);
+    margin: 15px auto;
+    border-radius: 50px;
+    box-shadow: 0 0 10px rgba(79, 172, 254, 0.5);
+}
+
+.text-muted {
+    color: #b0b0b0 !important;
+}
+
+.contact-form .row {
+    margin: 0 -12px;
+}
+
+.contact-form .col-md-6,
+.contact-form .col-12 {
+    padding: 0 12px;
+}
+
+.form-floating {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.form-floating .form-control {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px 20px;
+    height: calc(3.5rem + 2px);
+    font-size: 1rem;
+    color: #ffffff;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+}
+
+.form-floating .form-control:focus {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #4facfe;
+    box-shadow: 0 0 15px rgba(79, 172, 254, 0.3);
+}
+
+.form-floating textarea.form-control {
+    height: 120px !important;
+    resize: none;
+}
+
+.form-floating > label {
+    padding: 1rem 1.25rem;
+    color: #888;
+    transition: all 0.3s ease;
+}
+
+.form-floating .form-control:focus + label {
+    color: #4facfe;
+}
+
+.btn-custom {
+    background: linear-gradient(90deg, #00f2fe 0%, #4facfe 100%);
+    color: white;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(79, 172, 254, 0.3);
+    margin-top: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-custom::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: 0.5s;
+}
+
+.btn-custom:hover::before {
+    left: 100%;
+}
+
+.btn-custom:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(79, 172, 254, 0.4);
+}
+
+/* Info Side Styles */
+.contact-info-side {
+    width: 400px;
+    background: rgba(20, 20, 20, 0.8);
+    padding: 50px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 90%, rgba(79, 172, 254, 0.1) 0%, transparent 20%),
+        radial-gradient(circle at 90% 20%, rgba(0, 242, 254, 0.1) 0%, transparent 20%);
+    opacity: 0.6;
+    z-index: 1;
+    animation: patternFloat 10s ease-in-out infinite;
+}
+
+@keyframes patternFloat {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-10px) scale(1.02); }
+}
+
+.info-content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-info-header {
+    margin-bottom: 40px;
+}
+
+.contact-info-header h3 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    background: linear-gradient(90deg, #00f2fe 0%, #4facfe 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.contact-info-list {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.contact-info-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.contact-info-item:hover {
+    transform: translateX(5px);
+}
+
+.icon-box {
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(135deg, rgba(0, 242, 254, 0.1) 0%, rgba(79, 172, 254, 0.1) 100%);
+    border: 1px solid rgba(79, 172, 254, 0.3);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.contact-info-item:hover .icon-box {
+    background: linear-gradient(135deg, rgba(0, 242, 254, 0.2) 0%, rgba(79, 172, 254, 0.2) 100%);
+    transform: rotate(10deg);
+}
+
+.icon-box i {
+    font-size: 1.2rem;
+    color: #4facfe;
+    transition: all 0.3s ease;
+}
+
+.contact-info-item:hover .icon-box i {
+    transform: scale(1.1);
+}
+
+.info-box h6 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #4facfe;
+}
+
+.info-box span,
+.info-box a {
+    font-size: 0.95rem;
+    color: #b0b0b0;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.info-box a:hover {
+    color: #4facfe;
+}
+
+.contact-social {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.contact-social h6 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #ffffff;
+}
+
+.social-links {
+    display: flex;
+    gap: 12px;
+}
+
+.social-link {
+    width: 35px;
+    height: 35px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #4facfe;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.social-link::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.social-link:hover::before {
+    opacity: 1;
+}
+
+.social-link i {
+    position: relative;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+.social-link:hover i {
+    color: #ffffff;
+    transform: rotate(360deg);
+}
+
+/* Responsive Styles */
+@media (max-width: 991px) {
+    .contact-box {
+        flex-direction: column;
+    }
+    
+    .contact-info-side {
+        width: 100%;
+    }
+    
+    .contact-form-side,
+    .contact-info-side {
+        padding: 40px;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .contact-info-list {
+        margin: 30px 0;
+    }
+}
+
+@media (max-width: 767px) {
+    .contact-us {
+        padding: 30px 15px;
+    }
+    
+    .contact-form-side,
+    .contact-info-side {
+        padding: 30px 20px;
+    }
+    
+    .form-floating .form-control {
+        font-size: 0.95rem;
+    }
+    
+    .contact-info-item {
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+    }
+    
+    .icon-box {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* Enhanced Courses Section Styles */
+.section-heading {
+  margin-bottom: 50px;
+}
+  
+.section-subtitle {
+  color: #f5a425;
+  font-size: 1.1rem;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 10px;
+}
+  
+.section-description {
+  color: #666;
+  max-width: 800px;
+  margin: 20px auto 0;
+}
+  
+.course-card {
+  background: linear-gradient(145deg, #ffffff, #f5f5f5);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  padding: 30px;
+  position: relative;
+  z-index: 1;
+}
+  
+.course-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+  
+.course-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(245, 164, 37, 0.1), rgba(0, 0, 0, 0.05));
+  z-index: -1;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+  
+.course-card:hover::before {
+  opacity: 1;
+}
+  
+.card-icon {
+  width: 80px;
+  height: 80px;
+  background: #f5a425;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 25px;
+  transition: all 0.3s ease;
+}
+  
+.card-icon i {
+  font-size: 35px;
+  color: white;
+}
+  
+.course-card:hover .card-icon {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 5px 15px rgba(245, 164, 37, 0.3);
+}
+  
+.down-content {
+  text-align: center;
+}
+  
+.down-content h4 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: white;
+  font-weight: 600;
+}
+  
+.down-content p {
+  color: white;
+}
+  
+.features-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+  text-align: left;
+}
+  
+.features-list li {
+  padding: 12px 0;
+  color: rgb(23, 21, 21); 
+  font-size: 0.95rem;
+  border-bottom: 1px dashed rgba(255,255,255,0.1);
+  transition: all 0.3s ease;
+}
+  
+.features-list li:last-child {
+  border-bottom: none;
+}
+  
+.features-list li:hover {
+  color: #f5a425;
+  padding-left: 5px;
+}
+  
+.features-list li i {
+  color: #4CAF50;
+  margin-right: 10px;
+  font-size: 16px;
+}
+  
+.info {
+  border-top: 1px solid rgba(0,0,0,0.1);
+  padding-top: 20px;
+  margin-top: 20px;
+}
+  
+.rating {
+  color: #f5a425;
+}
+  
+.rating i {
+  margin: 0 2px;
+}
+  
+.price {
+  background: #f5a425;
+  color: #fff;
+  padding: 8px 15px;
+  border-radius: 25px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+  
+.course-card:hover .price {
+  transform: scale(1.05);
+  box-shadow: 0 3px 10px rgba(245, 164, 37, 0.3);
+}
+
+/* Price tag optimization */
+.info {
+  border-top: 1px solid rgba(0,0,0,0.1);
+  padding-top: 20px;
+  margin-top: 20px;
+}
+  
+.info .row {
+  margin: 0;
+  align-items: center;
+  justify-content: space-between;
+}
+  
+.info .col-8 {
+  padding-left: 0;
+}
+  
+.info .col-4 {
+  padding-right: 0;
+  text-align: right;
+}
+  
+.rating {
+  color: #f5a425;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+  
+.price {
+  background: #f5a425;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(245, 164, 37, 0.2);
+}
+  
+.price span {
+  margin-left: 2px;
+}
+  
+.course-card:hover .price {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(245, 164, 37, 0.3);
+}
+
+.ai-tools {
+    padding: 100px 0;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.ai-tools::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect fill="rgba(255,255,255,0.03)" x="0" y="0" width="100" height="100"/></svg>') repeat;
+    opacity: 0.5;
+    animation: backgroundShift 15s linear infinite;
+}
+
+.tool-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 40px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    height: 100%;
+}
+
+.tool-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    border-color: rgba(79, 172, 254, 0.3);
+}
+
+.tool-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+    transition: all 0.3s ease;
+}
+
+.tool-icon i {
+    font-size: 35px;
+    color: white;
+}
+
+.tool-card:hover .tool-icon {
+    transform: scale(1.1) rotate(10deg);
+    box-shadow: 0 0 20px rgba(79, 172, 254, 0.5);
+}
+
+.tool-content h3 {
+    color: white;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.tool-content p {
+    color: #b0b0b0;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.tool-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 25px 0;
+}
+
+.tool-features li {
+    color: #ffffff;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.tool-features li i {
+    color: #4facfe;
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+.tool-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 12px 25px;
+    background: linear-gradient(90deg, #00f2fe 0%, #4facfe 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.tool-btn i {
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+}
+
+.tool-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(79, 172, 254, 0.4);
+    color: white;
+}
+
+.tool-btn:hover i {
+    transform: translateX(5px);
+}
+
+.tool-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: 0.5s;
+}
+
+.tool-btn:hover::before {
+    left: 100%;
+}
+
+@media (max-width: 991px) {
+    .ai-tools {
+        padding: 60px 0;
+    }
+    
+    .tool-card {
+        padding: 30px;
+    }
+}
+
+@media (max-width: 767px) {
+    .tool-card {
+        margin-bottom: 30px;
+    }
+}
+
+/* Add these styles to your existing CSS */
+.right-icons ul {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.right-icons ul li a:not(.btn) {
+    color: #fff;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.right-icons ul li a:not(.btn):hover {
+    background: #f5a425;
+    transform: translateY(-3px);
+}
+
+.right-icons ul li:last-child {
+    margin-left: auto;
+}
+
+.thank-you-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    backdrop-filter: blur(8px);
+}
+
+.thank-you-popup.active {
+    display: flex;
+    opacity: 1;
+}
+
+.popup-content {
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.95) 0%, rgba(45, 45, 45, 0.95) 100%);
+    padding: 50px 40px;
+    border-radius: 25px;
+    text-align: center;
+    position: relative;
+    max-width: 450px;
+    width: 90%;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4),
+                0 0 100px rgba(79, 172, 254, 0.1);
+    border: 1px solid rgba(79, 172, 254, 0.2);
+    transform: scale(0.7) translateY(30px);
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.thank-you-popup.active .popup-content {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+}
+
+.popup-logo {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 30px;
+    position: relative;
+    animation: logoFloat 3s ease-in-out infinite;
+}
+
+.popup-logo::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 15px;
+    background: radial-gradient(ellipse at center, rgba(79, 172, 254, 0.3) 0%, transparent 70%);
+    animation: shadowPulse 3s ease-in-out infinite;
+}
+
+.popup-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 15px rgba(79, 172, 254, 0.2));
+}
+
+@keyframes logoFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+@keyframes shadowPulse {
+    0%, 100% { opacity: 0.3; transform: translateX(-50%) scale(1); }
+    50% { opacity: 0.6; transform: translateX(-50%) scale(1.2); }
+}
+
+.popup-content h3 {
+    color: #ffffff;
+    font-size: 32px;
+    margin-bottom: 15px;
+    background: linear-gradient(90deg, #ffffff, #4facfe, #ffffff);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 3s linear infinite;
+}
+
+.popup-content p {
+    color: #b0b0b0;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.popup-content p:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+.close-popup {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(79, 172, 254, 0.1);
+    border: none;
+    color: #4facfe;
+    font-size: 22px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.close-popup:hover {
+    transform: rotate(90deg);
+    background: rgba(79, 172, 254, 0.2);
+    color: #ffffff;
+}
+
+@keyframes shine {
+    to {
+        background-position: 200% center;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 576px) {
+    .popup-content {
+        padding: 40px 25px;
+    }
+    
+    .popup-logo {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 25px;
+    }
+    
+    .popup-content h3 {
+        font-size: 28px;
+    }
+    
+    .popup-content p {
+        font-size: 1rem;
+    }
+}
+
+/* Logo Styles */
+.header-area .logo {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    font-size: 28px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+}
+
+.header-area .logo img {
+    height: 55px;
+    width: auto;
+    margin-right: 15px;
+    transition: all 0.3s ease;
+}
+
+.header-area.header-sticky .logo img {
+    height: 45px;
+}
+
+@media (max-width: 767px) {
+    .header-area .logo img {
+        height: 45px;
+    }
+    .header-area.header-sticky .logo img {
+        height: 40px;
+    }
+}
+
+.cart-icon {
+    position: relative;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.cart-icon:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+.cart-count {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: #f5a425;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+}
+
+.cart-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.cart-notification.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.add-to-cart {
+    background: #f5a425;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.add-to-cart:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(245, 164, 37, 0.3);
+}
+
+/* Cart Sidebar Styles */
+.cart-sidebar {
+    position: fixed;
+    top: 0;
+    right: -400px;
+    width: 400px;
+    height: 100%;
+    background: rgba(26, 26, 26, 0.95);
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    transition: right 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.cart-sidebar.active {
+    right: 0;
+}
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.cart-header h3 {
+    color: white;
+    font-size: 1.5rem;
+}
+
+.close-cart {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.cart-items {
+    flex-grow: 1;
+    overflow-y: auto;
+    margin-bottom: 20px;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cart-item img {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    margin-right: 15px;
+}
+
+.cart-item-details {
+    flex-grow: 1;
+}
+
+.cart-item-title {
+    color: white;
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+.cart-item-price {
+    color: #f5a425;
+    font-size: 0.9rem;
+}
+
+.cart-footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+}
+
+.cart-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    color: white;
+    font-size: 1.2rem;
+}
+
+.checkout-btn {
+    background: #f5a425;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    text-align: center;
+}
+
+.checkout-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(245, 164, 37, 0.3);
+}
+
+@media (max-width: 576px) {
+    .cart-sidebar {
+        width: 100%;
+        right: -100%;
+    }
+}
+</style>
+  </head>
+
+<body>
+
+  <!-- Sub Header -->
+  <div class="sub-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-sm-8">
+          <div class="left-content">
+            <p>This is an Commerical Website Created By <em>Cyrus</em></p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-4">
+          <div class="right-icons">
+            <ul>
+              <li><a href="mailto:dscyrus007@gmail.com" title="Email Us"><i class="fa fa-envelope"></i></a></li>
+              <li><a href="tel:8855994761" title="Call Us"><i class="fa fa-phone-alt"></i></a></li>
+              <li><a href="Form/form.html" class="btn btn-primary btn-sm px-3" title="Login"><i class="fa fa-user"></i> Login</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ***** Header Area Start ***** -->
+  <header class="header-area header-sticky">
+      <div class="container">
+          <div class="row">
+              <div class="col-12">
+                  <nav class="main-nav">
+                      <!-- ***** Logo Start ***** -->
+                      <a href="index.html" class="logo">
+                          <img src="assets/logo.png" alt="VizPro:Insights Logo" style="height: 55px; margin-right: 15px;">
+                          VizPro:Insights
+                      </a>
+                      <!-- ***** Logo End ***** -->
+                      <!-- ***** Menu Start ***** -->
+                      <ul class="nav">
+                          <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
+                          <li><a href="Dashboard Gallery/gallery.html">Dashboards</a></li>
+                          <li><a href="Vizpro Expertise/index.html">Expertise</a></li>
+                          <li><a href="Form/workspace.html">Workspace</a></li>
+                          <li class="scroll-to-section"><a href="#courses">Premium</a></li> 
+                          <li class="scroll-to-section"><a href="#contact">Contact Us</a></li>
+                          <li class="cart-icon">
+                              <a href="#" id="cart-trigger">
+                                  <i class="fas fa-shopping-cart"></i>
+                                  <span class="cart-count">0</span>
+                              </a>
+                          </li>
+                      </ul>        
+                      <a class='menu-trigger'>
+                          <span>Menu</span>
+                      </a>
+                      <!-- ***** Menu End ***** -->
+                  </nav>
+              </div>
+          </div>
+      </div>
+  </header>
+  <!-- ***** Header Area End ***** -->
+
+  <!-- Shopping Cart Sidebar -->
+  <div class="cart-sidebar" id="cart-sidebar">
+      <div class="cart-header">
+          <h3>Shopping Cart</h3>
+          <button class="close-cart" id="close-cart">
+              <i class="fas fa-times"></i>
+          </button>
+      </div>
+      <div class="cart-items" id="cart-items">
+          <!-- Cart items will be dynamically added here -->
+      </div>
+      <div class="cart-footer">
+          <div class="cart-total">
+              <span>Total:</span>
+              <span class="total-amount">₹0</span>
+          </div>
+          <button class="checkout-btn" id="checkout-btn">
+              Proceed to Checkout
+          </button>
+      </div>
+  </div>
+
+  <!-- Cart Notification -->
+  <div class="cart-notification" id="cart-notification"></div>
+
+  <!-- ***** Main Banner Area Start ***** -->
+  <section class="section main-banner" id="top" data-section="section1">
+      <video autoplay muted loop id="bg-video">
+          <source src="assets/images/course-video.mp4" type="video/mp4" />
+      </video>
+
+      <div class="video-overlay header-text">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="caption">
+                    <h6 style="font-size: 1.25rem; margin-bottom: 1rem; color: white;">Hello Professionals</h6>
+                    <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem; color: white;">Welcome to VizPro:Insights</h2>
+                    <p style="font-size: 1.15rem; line-height: 1.8; max-width: 900px; margin: 0 auto; color: white;">VizPro provides you the best insights for your company as per your need. The dynamic nature of real time data and the need for intelligent insights, VizPro intregrates Machine Learning and Artificial Intelligence techinques into a comprehensive real-time data visualization board.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+  </section>
+  <!-- ***** Main Banner Area End ***** -->
+
+  <section class="services">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="owl-service-item owl-carousel">
+          
+            <div class="item">
+              <div class="icon">
+                <img src="assets/images/service-icon-01.png" alt="">
+              </div>
+              <div class="down-content">
+                <h4>AI Insights Dashboard</h4>
+                <p> Dive into the future of data visualization with our cutting-edge AI-driven dashboard. Gain real-time insights and predictions, empowering your decision-making process with the latest advancements in machine learning.</p>
+              </div>
+            </div>
+            
+            <div class="item">
+              <div class="icon">
+                <img src="assets/images/service-icon-02.png" alt="">
+              </div>
+              <div class="down-content">
+                <h4>Dynamic Data Symphony</h4>
+                <p> Join us on a journey where data meets intelligence. This project merges the power of machine learning and AI to create a symphony of real-time visualizations, transforming raw data into actionable insights for informed decision-making.</p>
+              </div>
+            </div>
+            
+            <div class="item">
+              <div class="icon">
+                <img src="assets/images/service-icon-03.png" alt="">
+              </div>
+              <div class="down-content">
+                <h4>Beyond Dashboards</h4>
+                <p> Elevate your analytics experience with our revolutionary project that goes beyond traditional dashboards. Experience the next frontier of data visualization, fueled by artificial intelligence, delivering instant and predictive insights for strategic advantage.</p>
+              </div>
+            </div>
+            
+            <div class="item">
+              <div class="icon">
+                <img src="assets/images/service-icon-02.png" alt="">
+              </div>
+              <div class="down-content">
+                <h4>InsightForge</h4>
+                <p> Introducing InsightForge, a groundbreaking real-time data visualization board infused with AI magic. Unleash the power of machine learning to foresee trends, detect anomalies, and empower your decision-making with unprecedented accuracy.</p>
+              </div>
+            </div>
+            
+            <div class="item">
+              <div class="icon">
+                <img src="assets/images/service-icon-03.png" alt="">
+              </div>
+              <div class="down-content">
+                <h4>Project QuantumVision</h4>
+                <p> Witness the alchemy of data transformation with Project QuantumVision. This project fuses AI and machine learning to turn raw data into gold – providing real-time insights that empower organizations to navigate complexity and seize opportunities like never before.</p>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <section class="our-courses" id="courses">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="section-heading text-center">
+            <span class="section-subtitle">Explore Our</span>
+            <h2 class="section-title">Popular Dashboards</h2>
+            <p class="section-description">Discover our powerful and intuitive dashboard solutions designed to transform your data into actionable insights</p>
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <div class="owl-courses-item owl-carousel">
+            <div class="item">
+              <div class="course-card" data-course-id="1">
+                <div class="card-icon">
+                  <i class="fa fa-chart-line"></i>
+                </div>
+                <div class="down-content">
+                  <h4>Analytical Dashboards</h4>
+                  <div class="features-list">
+                    <ul>
+                      <li><i class="fa fa-check-circle"></i> Real-time data analysis</li>
+                      <li><i class="fa fa-check-circle"></i> Interactive visualizations</li>
+                      <li><i class="fa fa-check-circle"></i> Custom reporting tools</li>
+                    </ul>
+                  </div>
+                  <div class="info">
+                    <div class="row align-items-center">
+                      <div class="col-8">
+                        <div class="rating">
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                        </div>
+                      </div>
+                      <div class="col-4">
+                        <div class="price">
+                          <i class="fa fa-tag"></i>
+                          <span>Rs-4999</span>
+                        </div>
+                      </div>
+                    </div>
+                    <button class="add-to-cart-btn" onclick="addToCart('Analytical Dashboards', 4999, 'assets/images/service-icon-01.png')">
+                      <i class="fas fa-shopping-cart"></i> Add to Cart
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="item">
+              <div class="course-card" data-course-id="2">
+                <div class="card-icon">
+                  <i class="fa fa-money-bill"></i>
+                </div>
+                <div class="down-content">
+                  <h4>Financial Dashboards</h4>
+                  <div class="features-list">
+                    <ul>
+                      <li><i class="fa fa-check-circle"></i> Financial forecasting</li>
+                      <li><i class="fa fa-check-circle"></i> Budget tracking</li>
+                      <li><i class="fa fa-check-circle"></i> Revenue analytics</li>
+                    </ul>
+                  </div>
+                  <div class="info">
+                    <div class="row align-items-center">
+                      <div class="col-8">
+                        <div class="rating">
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                        </div>
+                      </div>
+                      <div class="col-4">
+                        <div class="price">
+                          <i class="fa fa-tag"></i>
+                          <span>Rs-5999</span>
+                        </div>
+                      </div>
+                    </div>
+                    <button class="add-to-cart-btn" onclick="addToCart('Financial Dashboards', 5999, 'assets/images/service-icon-02.png')">
+                      <i class="fas fa-shopping-cart"></i> Add to Cart
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="course-card" data-course-id="3">
+                <div class="card-icon">
+                  <i class="fa fa-headset"></i>
+                </div>
+                <div class="down-content">
+                  <h4>Customer Service Dashboards</h4>
+                  <div class="features-list">
+                    <ul>
+                      <li><i class="fa fa-check-circle"></i> Ticket tracking system</li>
+                      <li><i class="fa fa-check-circle"></i> Customer feedback analysis</li>
+                      <li><i class="fa fa-check-circle"></i> Response time metrics</li>
+                    </ul>
+                  </div>
+                  <div class="info">
+                    <div class="row align-items-center">
+                      <div class="col-8">
+                        <div class="rating">
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                        </div>
+                      </div>
+                      <div class="col-4">
+                        <div class="price">
+                          <i class="fa fa-tag"></i>
+                          <span>Rs-3999</span>
+                        </div>
+                      </div>
+                    </div>
+                    <button class="add-to-cart-btn" onclick="addToCart('Customer Service Dashboards', 3999, 'assets/images/service-icon-03.png')">
+                      <i class="fas fa-shopping-cart"></i> Add to Cart
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Add the new AI Tools section here -->
+  <section class="ai-tools" id="ai-tools" data-aos="fade-up">
+    <div class="container">
+        <div class="section-heading text-center" data-aos="fade-up">
+          <h2 class="section-title"></h2>
+          <h2 class="section-title">AI-Powered Solutions<br>
+            Our Smart Tools</h2>
+            <p class="section-description">Leverage the power of artificial intelligence with our cutting-edge tools</p>
+            <div class="section-divider"></div>
+        </div>
+
+        <div class="row justify-content-center mt-5">
+            <!-- Insights Prediction Tool -->
+            <div class="col-lg-4 mb-4" data-aos="fade-right" data-aos-delay="100">
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="tool-content">
+                        <h3>Insights Prediction Model</h3>
+                        <p>Unlock valuable insights from your data using our advanced prediction model powered by machine learning algorithms.</p>
+                        <ul class="tool-features">
+                            <li><i class="fas fa-check-circle"></i> Predictive Analytics</li>
+                            <li><i class="fas fa-check-circle"></i> Pattern Recognition</li>
+                            <li><i class="fas fa-check-circle"></i> Trend Analysis</li>
+                        </ul>
+                        <a href="http://localhost:5000" class="tool-btn">
+                            Try Tool <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Data Cleaning Tool -->
+            <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <div class="tool-content">
+                        <h3>Data Cleaning Model</h3>
+                        <p>Transform raw data into clean, analysis-ready datasets with our intelligent data cleaning solution.</p>
+                        <ul class="tool-features">
+                            <li><i class="fas fa-check-circle"></i> Automated Cleaning</li>
+                            <li><i class="fas fa-check-circle"></i> Error Detection</li>
+                            <li><i class="fas fa-check-circle"></i> Data Standardization</li>
+                        </ul>
+                        <a href="http://localhost:5001" class="tool-btn">
+                            Try Tool <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Insights and Visualizations Tool -->
+            <div class="col-lg-4 mb-4" data-aos="fade-left" data-aos-delay="300">
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <div class="tool-content">
+                        <h3>Insights & Visualizations Model</h3>
+                        <p>Create stunning, interactive visualizations and extract meaningful insights from your data with our advanced visualization engine.</p>
+                        <ul class="tool-features">
+                            <li><i class="fas fa-check-circle"></i> Interactive Dashboards</li>
+                            <li><i class="fas fa-check-circle"></i> Real-time Analytics</li>
+                            <li><i class="fas fa-check-circle"></i> Custom Visualizations</li>
+                        </ul>
+                        <a href="http://localhost:5002" class="tool-btn">
+                            Try Tool <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </section>
+
+
+  <!-- .\start_apps.ps1 -->
+
+
+  <section class="contact-us" id="contact">
+    <div class="contact-container">
+        <div class="contact-box">
+            <div class="contact-form-side">
+                <div class="form-header text-center">
+                    <h2 class="section-title">Get In Touch</h2>
+                    <div class="section-divider"></div>
+                    <p class="text-muted">We're here to help and answer any questions you might have</p>
+                </div>
+                
+                <form id="contact" action="https://api.web3forms.com/submit" method="POST" class="contact-form">
+                    <!-- Add Web3Forms access key -->
+                    <input type="hidden" name="access_key" value="f00362ea-6508-4bf0-a84e-c53ba729bfe6">
+                    <!-- Add success redirect to same page -->
+                    <input type="hidden" name="redirect" value="false">
+                    <!-- Add form submission handler -->
+                    <input type="hidden" name="from_name" value="VizPro Contact Form">
+                    
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required>
+                                <label for="name"><i class="fas fa-user me-2"></i>Your Name</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Your Email" pattern="[^ @]*@[^ @]*" required>
+                                <label for="email"><i class="fas fa-envelope me-2"></i>Your Email</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" required>
+                                <label for="subject"><i class="fas fa-tag me-2"></i>Subject</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <textarea class="form-control" id="message" name="message" placeholder="Your Message" style="height: 120px" required></textarea>
+                                <label for="message"><i class="fas fa-comment me-2"></i>Your Message</label>
+                            </div>
+                        </div>
+                        <div class="col-12 text-center">
+                            <button type="submit" id="form-submit" class="btn-custom">
+                                <span class="submit-text">Send Message <i class="fas fa-paper-plane ms-2"></i></span>
+                                <span class="loading-text" style="display: none;">
+                                    <i class="fas fa-spinner fa-spin"></i> Sending...
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="contact-info-side">
+                <div class="info-content">
+                    <div class="contact-info-header">
+                        <h3>Contact Information</h3>
+                        <p>Feel free to reach out using any of these methods</p>
+                    </div>
+                    
+                    <div class="contact-info-list">
+                        <div class="contact-info-item">
+                            <div class="icon-box">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div class="info-box">
+                                <h6>Phone Number</h6>
+                                <span>8855994761</span>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-info-item">
+                            <div class="icon-box">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="info-box">
+                                <h6>Email Address</h6>
+                                <span>dscyrus007@gmail.com</span>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-info-item">
+                            <div class="icon-box">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="info-box">
+                                <h6>Location</h6>
+                                <span>Thakur College of Science And Commerce, Kandivali(East)</span>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-info-item">
+                            <div class="icon-box">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                            <div class="info-box">
+                                <h6>Website</h6>
+                                <a href="https://github-cyrus.github.io/Cyrus-Portfolio/#" class="website-link">Cyrus Website</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-social">
+                        <h6>Follow Us</h6>
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-pattern"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Add this right after your contact form section -->
+<div class="thank-you-popup" id="thankYouPopup">
+    <div class="popup-content">
+        <div class="popup-logo">
+            <img src="assets/logo.png" alt="VizPro Logo">
+        </div>
+        <h3>Thank You!</h3>
+        <p>Your message has been sent successfully.</p>
+        <p>We'll get back to you soon!</p>
+        <button class="close-popup" onclick="closeThankYouPopup()">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+</div>
+
+  <!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="assets/js/isotope.min.js"></script>
+    <script src="assets/js/owl-carousel.js"></script>
+    <script src="assets/js/lightbox.js"></script>
+    <script src="assets/js/tabs.js"></script>
+    <script src="assets/js/video.js"></script>
+    <script src="assets/js/slick-slider.js"></script>
+    <script src="assets/js/custom.js"></script>
+    <script>
+        //according to loftblog tut
+        $('.nav li:first').addClass('active');
+
+        var showSection = function showSection(section, isAnimate) {
+          var
+          direction = section.replace(/#/, ''),
+          reqSection = $('.section').filter('[data-section="' + direction + '"]'),
+          reqSectionPos = reqSection.offset().top - 0;
+
+          if (isAnimate) {
+            $('body, html').animate({
+              scrollTop: reqSectionPos },
+            800);
+          } else {
+            $('body, html').scrollTop(reqSectionPos);
+          }
+
+        };
+
+        var checkSection = function checkSection() {
+          $('.section').each(function () {
+            var
+            $this = $(this),
+            topEdge = $this.offset().top - 80,
+            bottomEdge = topEdge + $this.height(),
+            wScroll = $(window).scrollTop();
+            if (topEdge < wScroll && bottomEdge > wScroll) {
+              var
+              currentId = $this.data('section'),
+              reqLink = $('a').filter('[href*=\\#' + currentId + ']');
+              reqLink.closest('li').addClass('active').
+              siblings().removeClass('active');
+            }
+          });
+        };
+
+        $('.main-menu, .responsive-menu, .scroll-to-section').on('click', 'a', function (e) {
+          e.preventDefault();
+          showSection($(this).attr('href'), true);
+        });
+
+        $(window).scroll(function () {
+          checkSection();
+        });
+    </script>
+    <script>
+      AOS.init({
+        duration: 800,
+        easing: 'ease-in-out',
+        once: true
+      });
+    </script>
+    <script src="https://web3forms.com/client/script.js" async defer></script>
+    <script>
+    function showThankYouPopup() {
+        const popup = document.getElementById('thankYouPopup');
+        popup.classList.add('active');
+    }
+
+    function closeThankYouPopup() {
+        const popup = document.getElementById('thankYouPopup');
+        popup.classList.remove('active');
+    }
+
+    // Modify the form submission handling
+    const form = document.getElementById('contact');
+    const submitButton = document.getElementById('form-submit');
+    const submitText = submitButton.querySelector('.submit-text');
+    const loadingText = submitButton.querySelector('.loading-text');
+
+    form.addEventListener('submit', function(e) {
+        // Show loading state
+        submitText.style.display = 'none';
+        loadingText.style.display = 'inline-block';
+        submitButton.disabled = true;
+
+        // Let Web3Forms handle the submission
+        setTimeout(function() {
+            showThankYouPopup();
+            
+            // Reset form
+            form.reset();
+            
+            // Reset button state
+            submitText.style.display = 'inline-block';
+            loadingText.style.display = 'none';
+            submitButton.disabled = false;
+        }, 2000);
+    });
+    </script>
+    <script src="assets/js/cart.js"></script>
+</body>
+
+</body>
+</html>

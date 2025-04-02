@@ -1,0 +1,46 @@
+.tool-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+.tool-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.tool-header h1 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.upload-section {
+    background: #f8f9fa;
+    padding: 30px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.file-upload {
+    margin-bottom: 20px;
+}
+
+.results-section {
+    background: #f8f9fa;
+    padding: 30px;
+    border-radius: 10px;
+    margin-top: 30px;
+}
+
+#loading {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.btn {
+    padding: 10px 25px;
+    font-weight: 500;
+} 

@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VizPro:Insights - Data Cleaning Studio</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            --accent-color: #f5a425;
+            --highlight-blue: linear-gradient(90deg, #00f2fe 0%, #4facfe 100%);
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0b0;
+            --text-muted: rgba(255,255,255,0.1);
+        }
+
+        body {
+            background: var(--primary-gradient);
+            color: var(--text-primary);
+            min-height: 100vh;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-custom {
+            background: var(--highlight-blue);
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .btn-custom::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .btn-custom:hover::before {
+            left: 100%;
+        }
+
+        .icon-box {
+            transition: all 0.3s ease;
+        }
+
+        .icon-box:hover {
+            transform: scale(1.1) rotate(10deg);
+            box-shadow: 0 0 20px rgba(79, 172, 254, 0.5);
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect fill="rgba(255,255,255,0.03)" x="0" y="0" width="100" height="100"/></svg>') repeat;
+            opacity: 0.5;
+            animation: backgroundShift 15s linear infinite;
+        }
+
+        @keyframes backgroundShift {
+            0% { transform: translateX(0) translateY(0); }
+            50% { transform: translateX(-10px) translateY(-10px); }
+            100% { transform: translateX(0) translateY(0); }
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .section-divider {
+            width: 60px;
+            height: 3px;
+            background: var(--highlight-blue);
+            margin: 15px auto;
+            border-radius: 50px;
+        }
+
+        .form-control {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            color: white;
+            padding: 15px 20px;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #4facfe;
+            box-shadow: 0 0 15px rgba(79, 172, 254, 0.3);
+        }
+
+        @media (max-width: 991px) {
+            .section {
+                padding: 60px 0;
+            }
+            
+            .card {
+                padding: 30px;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .card {
+                margin-bottom: 30px;
+            }
+        }
+
+        .visualization-container {
+            width: 100%;
+            min-height: 600px;
+            margin: 20px auto;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .plot-container {
+            width: 100%;
+            height: 100%;
+            min-height: 500px;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <header class="text-center mb-12 animate-fade-in">
+            <h1 class="text-4xl font-bold text-purple-500 mb-4">Data Cleaning Studio</h1>
+            <p class="text-gray-400">Upload, Clean, Visualize, and Download your data with ease</p>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Upload Section -->
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg animate-slide-in">
+                <h2 class="text-2xl font-semibold mb-4 text-purple-400">Upload Data</h2>
+                <div class="upload-zone p-8 border-2 border-dashed border-gray-600 rounded-lg text-center cursor-pointer hover:border-purple-500 transition-colors">
+                    <input type="file" id="fileInput" class="hidden" accept=".csv,.xlsx,.xls">
+                    <svg class="mx-auto h-12 w-12 text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+                    </svg>
+                    <p class="text-gray-400">Drag & drop your file here or click to browse</p>
+                    <p class="text-sm text-gray-500 mt-2">Supported formats: CSV, XLSX, XLS</p>
+                </div>
+            </div>
+
+            <!-- Data Preview -->
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg animate-slide-in">
+                <h2 class="text-2xl font-semibold mb-4 text-purple-400">Data Preview</h2>
+                <div id="dataPreview" class="overflow-x-auto">
+                    <p class="text-gray-400 text-center">No data uploaded yet</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add this after the Data Preview section and before Cleaning Operations -->
+        <div class="mt-8 bg-gray-800 p-6 rounded-lg shadow-lg animate-slide-in">
+            <h2 class="text-2xl font-semibold mb-4 text-purple-400">Column Analysis</h2>
+            <div id="columnAnalysis" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Analysis will be populated here -->
+            </div>
+        </div>
+
+        <!-- Cleaning Operations -->
+        <div class="mt-8 bg-gray-800 p-6 rounded-lg shadow-lg animate-slide-in">
+            <h2 class="text-2xl font-semibold mb-4 text-purple-400">Cleaning Operations</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="cleaningOptions">
+                <!-- Missing Data Handling -->
+                <div class="bg-gray-700 p-4 rounded-lg">
+                    <h3 class="text-xl font-semibold mb-3 text-purple-300">Missing Data</h3>
+                    <select id="missingDataColumn" class="w-full bg-gray-600 text-white p-2 rounded mb-2">
+                        <option value="">Select Column</option>
+                    </select>
+                    <select id="missingDataOperation" class="w-full bg-gray-600 text-white p-2 rounded mb-2">
+                        <option value="fill_mean">Fill with Mean</option>
+                        <option value="fill_median">Fill with Median</option>
+                        <option value="fill_mode">Fill with Mode</option>
+                        <option value="fill_value">Fill with Custom Value</option>
+                        <option value="remove_rows">Remove Rows</option>
+                        <option value="ffill">Forward Fill</option>
+                        <option value="bfill">Backward Fill</option>
+                        <option value="interpolate">Interpolate</option>
+                    </select>
+                    <input type="text" id="customValue" placeholder="Custom value" class="w-full bg-gray-600 text-white p-2 rounded mb-2 hidden">
+                    <button onclick="applyMissingDataOperation()" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded transition-colors">
+                        Apply
+                    </button>
+                </div>
+
+                <!-- Duplicate Data -->
+                <div class="bg-gray-700 p-4 rounded-lg">
+                    <h3 class="text-xl font-semibold mb-3 text-purple-300">Duplicate Data</h3>
+                    <div id="duplicateColumns" class="mb-2"></div>
+                    <button onclick="removeDuplicates()" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded transition-colors">
+                        Remove Duplicates
+                    </button>
+                </div>
+
+                <!-- Data Type Correction -->
+                <div class="bg-gray-700 p-4 rounded-lg">
+                    <h3 class="text-xl font-semibold mb-3 text-purple-300">Data Type</h3>
+                    <select id="dataTypeColumn" class="w-full bg-gray-600 text-white p-2 rounded mb-2">
+                        <option value="">Select Column</option>
+                    </select>
+                    <select id="newDataType" class="w-full bg-gray-600 text-white p-2 rounded mb-2">
+                        <option value="int64">Integer</option>
+                        <option value="float64">Float</option>
+                        <option value="string">String</option>
+                        <option value="datetime64">DateTime</option>
+                    </select>
+                    <button onclick="changeDataType()" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded transition-colors">
+                        Apply
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Replace the existing visualization section with this -->
+        <div class="mt-8 bg-gray-800 p-6 rounded-lg shadow-lg animate-slide-in">
+            <h2 class="text-2xl font-semibold mb-4 text-purple-400">Data Visualization</h2>
+            
+            <!-- Visualization Controls -->
+            <div class="mb-4 grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-300 mb-2">Visualization Type</label>
+                    <select id="visualizationType" class="w-full bg-gray-600 text-white p-2 rounded">
+                        <option value="summary">Summary Dashboard</option>
+                        <option value="correlation">Correlation Matrix</option>
+                        <option value="distribution">Distribution Plot</option>
+                        <option value="missing">Missing Values</option>
+                        <option value="boxplot">Box Plot</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-300 mb-2">Select Column</label>
+                    <select id="visualizationColumn" class="w-full bg-gray-600 text-white p-2 rounded">
+                        <option value="">Select Column</option>
+                    </select>
+                </div>
+
+                <div class="flex items-end">
+                    <button onclick="generateVisualization()" 
+                            class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded transition-colors">
+                        Generate Plot
+                    </button>
+                </div>
+            </div>
+
+            <!-- Visualization Container -->
+            <div class="visualization-container">
+                <div id="plotDiv" class="plot-container"></div>
+            </div>
+        </div>
+
+        <div id="visualization-container" class="bg-gray-700 p-4 rounded-lg min-h-[400px]"></div>
+
+        <!-- Download Section -->
+        <div class="mt-8 text-center animate-slide-in">
+            <button onclick="downloadData()" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg transition-colors">
+                Download Cleaned Data
+            </button>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/ui-handlers.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/data-handlers.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/visualization.js') }}"></script>
+    <script>
+    function visualizeData(type, options = {}) {
+        const data = {
+            type: type,
+            data: currentData, // Your dataset
+            ...options
+        };
+
+        fetch('/visualize', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(result => {
+            if (result.success && result.plot) {
+                // Clear previous visualization
+                const container = document.getElementById('visualization-container');
+                container.innerHTML = '';
+                
+                // Create new visualization
+                Plotly.newPlot('visualization-container', 
+                    result.plot.data, 
+                    result.plot.layout
+                );
+            } else {
+                alert(result.error || 'Error creating visualization');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Error creating visualization');
+        });
+    }
+
+    // Example usage:
+    // visualizeData('correlation');
+    // visualizeData('scatter', { x_column: 'column1', y_column: 'column2' });
+    </script>
+</body>
+</html>
